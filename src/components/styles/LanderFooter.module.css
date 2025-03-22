@@ -1,0 +1,89 @@
+.container {
+    margin-top: 3em;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 1em 1em #1877F24D;
+}
+
+.login {
+    background-color: #EFF0EC;
+    border: none;
+    outline: none;
+    padding: 1em 1.5em;
+    border-radius: 0.3rem;
+}
+
+.socialContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2em;
+}
+
+.socialContainer > p {
+    font-size: 0.8rem;
+    width: 60%;
+    font-weight: 600;
+}
+
+.socials {
+    width: 20%;
+    display: flex;
+    align-self: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1em;
+    
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5em;
+    }
+
+    .linksText + .linksText {
+        margin-top: 2em;
+    }
+
+    .grid {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1em;
+    }
+
+    .links {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .none {
+        display: none;
+    }
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .container {
+        padding-bottom: 2em;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-top: 4em;
+    }
+
+    .authButtons {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1em;
+    }
+
+    .links {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2em;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+}

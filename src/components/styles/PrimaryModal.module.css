@@ -1,0 +1,121 @@
+.formContainer, .formContainer select , .formContainer input , .formContainer textarea {
+    /* width: 100%; */
+    letter-spacing: 0.1em;
+}
+
+.wrapper , .timeWrapper {
+    width: 80%;
+    /* background-color: red; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.timeWrapper {
+    margin-top: 0.5em;
+}
+
+.wrapper {
+    margin-top: 0.5em;
+}
+
+.inputWrapper , .selectWrapper , .textareaWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.textareaWrapper textarea {
+    resize: none;
+}
+
+.selectWrapper > div {
+    width: 60%;
+}
+
+.hostNameSelector select {
+    width: 100%;
+} 
+
+select {
+    position: relative;
+}
+
+.inputWrapper input , .textareaWrapper textarea {
+    width: 60%;
+    border-radius: 0.5rem;
+}
+
+.inputWrapper input {
+    padding: 0.7em;
+}
+
+.inputWrapper input , .textareaWrapper textarea , .selectWrapper select {
+    border: 1.5px solid #E0E0E0;
+}
+
+.inputWrapper input::placeholder {
+    color :#8A8A8A;
+}
+
+.textareaWrapper textarea {
+    font-size: 0.8rem;
+    padding: 1em;
+    line-height: 1.5;
+}
+
+/* .textareaWrapper {
+    align-items: flex-start;
+} */
+
+.selectWrapper {
+    position: relative;
+}
+
+.selectWrapper select {
+    appearance: none;
+    padding: 0.7em 2em 0.7em 1em;
+    border-radius: 0.5rem;
+}
+
+.selectWrapper span {
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+.pseudoSelector {
+    width: fit-content;
+    position: relative;
+}
+
+.selectWrapper span img {
+    transform: scale(0.7);
+}
+
+.generalFormButton {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2em;
+    width: 60%;
+    margin-left: 40%;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.generalFormButton button {
+    width: 30%;
+    padding: 0.7em 0;
+    border-radius: 0.7rem;
+}
+
+.cancelButton {
+    background-color: #F3F3F1;
+}
+
+.saveButton {
+    background-color: #1877F2;
+    color: white;
+}
+

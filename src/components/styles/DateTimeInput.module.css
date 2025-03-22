@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container > div {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectWrapper {
+    position: relative;
+}
+
+.selectWrapper > select {
+    padding: 0.7em 2em 0.7em 1em;
+    appearance: none;
+    border: 1.5px solid #E0E0E0;
+}
+
+.container input , .container select {
+    border-radius: 0.5rem;
+}
+
+.container input {
+    /* padding: 0.7em; */
+    padding-left: 1em;
+    border: 1.5px solid #E0E0E0;
+}
+
+.selectWrapper img {
+    transform: scale(0.7);
+}
+
+.selectWrapper > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* left: 50%; */
+    top: 10%;
+    pointer-events: none;
+    /* background-color: white; */
+}

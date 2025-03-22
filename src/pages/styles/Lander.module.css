@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap");
+
+.page {
+    width: 100%;
+    height: 100vh;
+    padding: 4vh 0;
+    /* overflow-x: hidden; */
+}
+
+img {
+    max-width: 100%;
+}
+
+.landerNav {
+    width: 100%;
+    background-color: #F0F0F0;
+    border-radius: 2rem;
+    padding: 0.8em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    /* font-size: 0.9rem; */
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.landerNav button {
+    border: none;
+    outline: none;
+    background-color: #1877F2;
+    color: white;
+    border-radius: 1.5rem;
+    padding: 0.5em 1.5em;
+    font-family: Inter;
+}
+
+.wrapper {
+    /* width: 80%; */
+    /* position: absolute; */
+    /* background-color: red; */
+    margin: 0 auto;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    /* padding: 4vh 2vw 0 2vw; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    font-family: "Poppins", sans-serif;
+}
+
+.wrapper > button {
+    align-self: center;
+}
+
+.wrapper > .heading {
+    margin-top: 1em;
+    align-self: center;
+    text-align: center;
+}
+
+.wrapper > img {
+    width: 80%;
+    height: auto;
+    align-self: center;
+}
+
+.wrapper > h2 {
+    align-self: center;
+    text-align: center;
+}
+
+.cnnctMotto {
+    text-align: center;
+    font-size: 1.05rem;
+    font-family: "Inter", sans-serif;
+    margin-top: 1em;
+}
+
+.cnnctFeatures {
+    display: flex;
+    font-family: "Inter", sans-serif;
+    gap: 20%;
+}
+
+.featureList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 2%; */
+    gap: 2em;
+}
+
+.featureContainer > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    /* padding-left: 0; */
+    list-style-position: inside;
+}
+
+li {
+    text-indent: -1.5em; 
+    padding-left: 1.5em; 
+}
+
+.featureImages {
+    display: flex;
+    margin-top: 10%;
+    /* margin-left: 10%; */
+}
+
+.calendarImgOne {
+    /* width: 50%;
+    height: auto; */
+    align-self: flex-start;
+    z-index: 10;
+}
+
+.calendarImgTwo {
+    /* width: auto;
+    height: 80%; */
+    align-self: flex-start;
+    /* margin-left: -20%; */
+}
+
+.customerContainer {
+    margin-top: 2em;
+}
+
+.customerStories {
+    /* width: 95%; */
+    /* padding: 2%; */
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: beige; */
+}
+
+.customerStories > div {
+    display: flex;
+    font-size: 0.7rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.customerStories > div p {
+    width: 50%;
+}
+
+.customerStories button {
+    background-color: transparent;
+    border-radius: 2rem;
+    padding: 1em 1.5em;
+    border: solid #1877F2;
+    color: #1877F2;
+    margin-top: 1em;
+}
+
+.customerReviews {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.customerReviews > div {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.reviewTitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.reviewerProfile {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background-color: #1877F2;
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+
+    .wrapper {
+        padding: 2vw;
+    }
+
+    .cnnctFeatures {
+        display: none;
+    }
+
+    .wrapper > img {
+        width: 100%;
+        margin-top: 2em;
+    }
+
+    .wrapper > h2 {
+        margin-top: 1em;
+        width: 80%;
+    }
+
+    .featureImagesMobile {
+        display: flex;
+    }
+
+    .featureImagesMobile img {
+        width: 50%; 
+        align-self: flex-end;
+    }
+
+    .featureImagesMobile .calendarImgOneMobile {
+        width: 50%;
+        height: auto;
+        align-self: flex-end;
+        z-index: 10;
+    }
+
+    .featureImagesMobile .calendarImgTwoMobile {
+        width: 60%;
+        height: auto;
+        margin-left: -30%;
+        margin-bottom: 5%;
+        align-self: flex-end;
+    }
+
+    .mobileNone {
+        display: none !important;
+    }
+    
+    .customerStories > p {
+        align-self: center;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .customerStories button {
+        margin: 1em auto;
+    }
+    
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .wrapper {
+        width: 80%;
+    }
+
+    .calendarImgOne {
+        width: 60%;
+        height: auto;
+        z-index: 10;
+    }
+    
+    .calendarImgTwo {
+        width: auto;
+        height: 70%;
+        margin-left: -30%;
+        margin-top: 7%;
+    }
+
+    .featureImagesMobile {
+        display: none;
+    }
+
+    .customerStories > p {
+        width: 50%;
+        font-size: 2.5rem;
+    }    
+}

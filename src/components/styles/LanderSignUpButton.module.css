@@ -1,0 +1,9 @@
+.signUpButton {
+    border: none;
+    outline: none;
+    background-color: #1877F2;
+    color: white;
+    border-radius: 1.5rem;
+    padding: 0.5em 1.5em;
+    font-family: Inter;
+}

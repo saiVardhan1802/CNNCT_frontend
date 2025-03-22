@@ -1,0 +1,124 @@
+.nextModal {
+    padding-bottom: 2em;
+}
+
+.bannerContainer > p {
+    font-weight: 600;
+}
+
+.bannerContainer , .linksContainer {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.banner {
+    width: 50%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 3em;
+    gap: 1em;
+    margin-top: 1em;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+.banner > img {
+    width: 20%;
+    height: auto;
+}
+
+.bannerBackground > p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 1em;
+}
+
+.bannerBackgroundOptions {
+    display: flex;
+    margin-top: 1em;
+    gap: 0.8em;
+}
+
+.bannerBackgroundOptions > div {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+.bannerBackgroundInput {
+    display: flex;
+    margin-top: 1em;
+    align-items: center;
+    gap: 1em;
+}
+
+.bannerBackgroundInput > div {
+    width: 3em;
+    height: 3em;
+    /* background-color: #000000; */
+    border-radius: 0.5rem;
+    border: 1.5px solid #1877F2;
+}
+
+.bannerBackgroundInput input {
+    padding: 1em 1em;
+    background-color: #F3F3F1;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+.bannerBackgroundInput input:invalid {
+    border: 1px solid red;
+}
+
+.linksContainer > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.1em;
+}
+
+.linksContainer > div > input {
+    width: 60%;
+    font-size: 0.8rem;
+    padding: 1.2em 0.7em;
+    letter-spacing: 0.1em;
+    border-radius: 1rem;
+    border: 1.5px solid #E0E0E0;
+}
+
+.addEmails {
+    margin-top: 1em;
+}
+
+.linksContainer > div > input::placeholder {
+    color: #8A8A8A;
+}
+
+.linksFormButton {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2em;
+    gap: 1em;
+}
+
+.linksFormButton > button {
+    width: 17%;
+    padding: 1em;
+    border-radius: 0.7rem;
+}
+
+.cancelButton {
+    background-color: #F3F3F1;
+}
+
+.saveButton {
+    background-color: #1877F2;
+    color: white;
+}

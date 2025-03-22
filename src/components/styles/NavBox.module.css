@@ -1,0 +1,30 @@
+.box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #676767;
+    font-size: 0.9rem;
+    padding: 0.7em 2em;
+    cursor: pointer;
+    /* border: 1px solid red; */
+    /* justify-content: center; */
+}
+
+.box > img {
+    transform: scale(0.8);
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    .box {
+        flex-direction: column;
+        padding: 1em 0.5em;
+    }
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .box {
+        gap: 1.5em;
+    }
+}
