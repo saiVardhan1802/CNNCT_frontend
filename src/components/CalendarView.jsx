@@ -26,7 +26,7 @@ const CalendarView = () => {
                 const eventsArray = meetings.map((meeting) => {
                     const dateAndTime = convertUTCToLocalStrings(meeting.dateTime);
                     return {
-                        id: meeting._id, // Important for future updates
+                        id: meeting._id, 
                         dateTime: meeting.dateTime,
                         day: dateAndTime.day,
                         date: dateAndTime.date,
@@ -67,12 +67,7 @@ const CalendarView = () => {
         []
       )
     const [view, setView] = useState(Views.WEEK)
-    // const views = {
-    //     month: true,
-    //     week: true,
-    //     day: true,
-    //     // year: YearView, // Custom View Add Chesaam
-    //   };
+   
       
 
       const onView = useCallback((newView) => setView(newView), [setView])
@@ -82,7 +77,7 @@ const CalendarView = () => {
     const events = [
         {
             title: "Team Meeting",
-            start: new Date(2025, 2, 28, 10, 0), // ✅ Correct format
+            start: new Date(2025, 2, 28, 10, 0),
             end: new Date(2025, 2, 28, 11, 0),
         },
         {
@@ -118,13 +113,13 @@ export default CalendarView;
 const transformMeetingsForCalendar = (meetings) => {
     return meetings.map((meeting) => {
       const startTime = new Date(meeting.dateTime); 
-      const endTime = new Date(startTime.getTime() + meeting.duration * 60000); // duration in minutes
+      const endTime = new Date(startTime.getTime() + meeting.duration * 60000);
   
       return {
         title: meeting.eventTopic, 
         start: startTime,
         end: endTime,
-        backgroundColor: meeting.backgroundColor || "#3b82f6", // Default blue
+        backgroundColor: meeting.backgroundColor || "#3b82f6",
         host: meeting.hostName,
         description: meeting.description,
         timezone: meeting.timezone,

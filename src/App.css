@@ -30,27 +30,6 @@ input:focus, textarea:focus, select:focus {
   /* border: none; */
 }
 
-/* Chrome, Safari, Edge
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-}
-
-input[type="date"] {
-  outline: none;
-} */
-
-/* Firefox */
-/* input[type="date"] {
- appearance: none;
-}  */
-
-/* input[type="date"] {
-  -moz-appearance: textfield;
-  position: relative;
-} */
-
-
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   width: 100%;
@@ -72,11 +51,6 @@ button {
 
 .rbc-allday-cell {
   display: none;
-}
-
-.rbc-header {
-  /* background-color: black; */
-  /* pointer-events: none; */
 }
 
 /* mobiles */

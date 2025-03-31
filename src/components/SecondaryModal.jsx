@@ -53,7 +53,7 @@ const SecondaryModal = ({ eventData, setEventData, HandleTextInput, setIsModal, 
             !isValidMemberEmail ||
             !eventData.addLink.trim() ||
             !eventData.eventTopic.trim() ||
-            eventData.addEmails.length === 0  // array check
+            eventData.addEmails.length === 0
         ) {
             toast.error("Please fill all the fields.");
             return;

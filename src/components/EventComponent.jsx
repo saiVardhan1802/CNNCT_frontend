@@ -7,10 +7,11 @@ import { convertUTCToLocalStrings, getEndTime } from '../pages/Booking';
 import { getUserTimezone } from '../pages/Events';
 import toast from 'react-hot-toast';
 import { DeleteEvent } from '../services';
+import errorIcon from '../assets/events/error.svg'; 
+import { hasConflict } from '../services/TimeConversionFunctions';
 export const API_URL = import.meta.env.VITE_API_URL;
 
-const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventData, setIsModal }) => {
-    // console.log("Event in component: ", event);
+const EventComponent = ({ event, upcomingEvents, setUpcomingEvents, index, eventData, setEventData, setIsModal }) => {
     const { date, day, time: startTime } = convertUTCToLocalStrings(event.dateTime);
     const endTime = getEndTime(event.dateTime, event.duration);
     const duration = convertDurationToString(event.duration);
@@ -18,6 +19,7 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
     const userId = localStorage.getItem("userId");
     const userEmail = localStorage.getItem('userEmail');
     const token = localStorage.getItem('token');
+    const [inConflict, setInConflict] = useState(false);
 
     useEffect(() => {
         if (event) {
@@ -42,19 +44,19 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
             console.log("Before click: ", eventData)
             setEventData({
                 eventId: event._id,
-                eventTopic: event.eventTopic, // ✅ Fixed wrong property name
+                eventTopic: event.eventTopic,
                 password: event.password,
                 description: event.description,
                 dateAndTime: {
-                    date: event.dateTime.split("T")[0], // ✅ Directly using event.dateTime
+                    date: event.dateTime.split("T")[0],
                     time: startTime.split(" ")[0],
                     ampm: startTime.split(" ")[1],
-                    timezone: getUserTimezone() // ✅ Using event-provided timezone
+                    timezone: getUserTimezone() 
                 },
                 duration: stringifyDurationForEventData(event.duration),
                 backgroundColor: event.backgroundColor,
                 addLink: event.link,
-                addEmails: event.inviteeEmails.join(", ") // ✅ This is correct
+                addEmails: event.inviteeEmails.join(", ")
             });
             
             setIsModal(true);
@@ -73,7 +75,7 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
                   ) 
                 };
 
-            const response = await fetch(`${API_URL}/meeting/${event._id}/toggle-active`, {
+            const response = await fetch(`${API_URL}/api/meeting/${event._id}/toggle-active`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -86,11 +88,6 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
 
             setIsActive(updatedStatus);
             toast.success(`Event marked as ${updatedStatus ? "active" : "inactive"}`);
-
-            // Update the event list in the parent component
-            // setUpcomingEvents(prevEvents => prevEvents.map((ev, i) => 
-            //     i === index ? { ...ev, ...updateData } : ev
-            // ));
         } catch (error) {
             console.error("Error updating active status:", error);
             toast.error("Something went wrong.");
@@ -118,24 +115,6 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
         .catch(() => toast.error("Failed to copy event link."));
     }
 
-// const [eventData, setEventData] = useState({
-//     eventId: '',
-//     eventTopic: '',
-//     password: '',
-//     hostName: name,
-//     description: '',
-//     dateAndTime: {
-//       date: "", // Format: YYYY-MM-DD
-//       time: "12:00", // Format: HH:MM (12-hour)
-//       ampm: "PM", // "AM" or "PM"
-//       timezone: getUserTimezone(), // Default timezone
-//     },
-//     duration: '1 hour',
-//     backgroundColor: '000000',
-//     addLink: '',
-//     addEmails: [],
-//   });
-
     return (
         <div className={styles.container}>
             <div style={{
@@ -162,6 +141,12 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
                 </label>
                 <RxCopy onClick={HandleCopy} className={styles.icon} />
                 <PiTrashThin onClick={HandleDelete} className={styles.icon} />
+            </div>
+            <div style={{display: inConflict? 'inline' : 'none'}} className={styles.errorBox}>
+                <div>
+                    <img src={errorIcon} alt="" />
+                    <p>Conflict of timing</p>
+                </div>
             </div>
         </div>
     )

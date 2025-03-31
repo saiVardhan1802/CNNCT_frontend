@@ -7,7 +7,7 @@ import CalendarView from './CalendarView';
 const AvailabilityComponent = ({ unavailability, setUnavailability, isAvailability }) => {
     function handleTimeInput(e, dayObj, idx) {
         const { name, value } = e.target;
-        const timeRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i; // 12-hour format validation
+        const timeRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i;
     
         setUnavailability((prev) =>
             prev.map((item) =>
@@ -18,8 +18,8 @@ const AvailabilityComponent = ({ unavailability, setUnavailability, isAvailabili
                               index === idx
                                   ? {
                                         ...s,
-                                        [name]: value, // Update the input value
-                                        [`${name}Error`]: value !== "" && !timeRegex.test(value), // ✅ Empty is valid
+                                        [name]: value, 
+                                        [`${name}Error`]: value !== "" && !timeRegex.test(value),
                                     }
                                   : s
                           ),
@@ -109,7 +109,7 @@ const AvailabilityComponent = ({ unavailability, setUnavailability, isAvailabili
                                     </div>
                                 </div>
                             ) : (
-                                //ee object map ayyi divs anni create avtay kada avanni oka div lo undali ela cheyali?
+                                
                             <div className={styles.timeInputWrapper}>
                                 {dayObj.slots.map((slot, idx) => (
                                     <div style={{ alignItems: 'center' }} className={styles.timeBlock} key={idx}>

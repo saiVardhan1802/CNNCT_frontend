@@ -110,13 +110,13 @@
     gap: 0.5em;
 }
 
-.removeIcon {      /*this************************/
+.removeIcon {     
     width: 0.8em;
     height: auto;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.timeBlockIcons > img {   /*this************************/
+.timeBlockIcons > img {   
     width: 0.8em;
     height: auto;
 }
@@ -144,7 +144,7 @@
     display: flex;
 }
 
-.dayContainer > img {   /*this************************/
+.dayContainer > img {   
     width: 5%;
     height: auto;
 }

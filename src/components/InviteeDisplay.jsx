@@ -8,40 +8,18 @@ import { DeleteEvent, updateUserInvitationStatus } from '../services';
 import toast from 'react-hot-toast';
 
 const InviteeDisplay = ({ inviteeNames, activeTab, event, eventId, HandleStatus, setSelectedEventId }) => {
-  // console.log(eventId);
     console.log(event);
     const userEmail = localStorage.getItem('userEmail');
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     console.log(userEmail);
-  //   async function HandleStatus(e, eventId, userEmail) {
-  //     try {
-  //         e.preventDefault();
-  //         const { name } = e.currentTarget; // Ensuring correct target
-          
-  //         const response = await updateUserInvitationStatus(userEmail, name, eventId, token);
-  
-  //         // Parsing response correctly
-  //         const data = await response.json();
-          
-  //         if (!response.ok) {
-  //             toast.error(data.message || "Something went wrong.");
-  //             return;
-  //         }
-  
-  //         toast.success(`Invitation ${name} successfully!`);
-  //     } catch (error) {
-  //         console.error("Error in handling status: ", error);
-  //         toast.error("Something went wrong.");
-  //     }
-  // }
 
   const wrapperRef = useRef(null);
 
     useEffect(() => {
         function handleClickOutside(event) {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-              setSelectedEventId(''); // Close when clicking outside
+              setSelectedEventId('');
             }
         }
 

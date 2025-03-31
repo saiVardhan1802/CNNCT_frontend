@@ -7,7 +7,6 @@ import membersIcon from '../assets/booking/membersIcon.png';
 const BookingComponent = ({ eventId, activeTab, event, HandleSelectedEvent, HandleStatus }) => {
     storeEventInLocalStorage(activeTab, event);
     const userEmail = localStorage.getItem('userEmail');
-    // console.log("event: ", event);
     let rightClass = {}
     let statusButtons = {};
     if (activeTab === 'upcoming') {
@@ -96,15 +95,9 @@ const storeEventInLocalStorage = (activeTab, newEvent) => {
     } else if (activeTab === "canceled") {
         return;
     } else {
-        key = "pastEvents"; // Only for past events
+        key = "pastEvents";
     }
-
-    // Fetch existing events
     let events = JSON.parse(localStorage.getItem(key)) || [];
-
-    // Add new event
     events.push(newEvent);
-
-    // Update localStorage
     localStorage.setItem(key, JSON.stringify(events));
 };

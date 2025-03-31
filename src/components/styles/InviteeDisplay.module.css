@@ -7,13 +7,12 @@
     bottom: 30%;
     right: 0;
     overflow-y: scroll;
-    /* border: 2px solid rebeccapurple; */
     padding: 2em 1em;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
-    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.15), /* Left shadow */
-            0px -5px 5px rgba(0, 0, 0, 0.15), /* Top shadow */
-            0px 5px 5px rgba(0, 0, 0, 0.15);  /* Bottom shadow */
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.15),
+            0px -5px 5px rgba(0, 0, 0, 0.15),
+            0px 5px 5px rgba(0, 0, 0, 0.15);
 
 }
 

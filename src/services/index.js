@@ -22,17 +22,6 @@ export async function login({ data }) {
     return response;
 };
 
-// export async function setUser({ data }) {
-//     const response = await fetch(`${API_URL}/user`, {
-//         method: 'PUT',
-//         body: JSON.stringify(data),
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     });
-//     return response
-// }
-
 export const updateUser = async (token, updates) => {
     try {
         const response = await fetch(`${API_URL}/api/user`, {
@@ -88,7 +77,7 @@ export async function createMeeting(updates, token) {
     }
 }
 
-export async function getUserMeetings(username, token) { //this
+export async function getUserMeetings(username, token) { 
     try {
         const response = await fetch(`${API_URL}/api/meeting/user/${username}`, {
             method: 'GET',
@@ -124,10 +113,10 @@ export async function updateUserInvitationStatus(userEmail, status, meetingId, t
             throw new Error(`Failed to update invitation: ${errorMessage}`);
         }
 
-        return response;  // Always return response
+        return response;
     } catch (error) {
         console.error("Error updating invitation:", error);
-        return null;  // Explicitly return null to avoid undefined errors
+        return null; 
     }
 }
 

@@ -140,8 +140,6 @@ function validatePassword(password, confirmPassword) {
     if (!/[@$!%*?&]/.test(password)) {
         errors.push("Password must contain at least one special character (@$!%*?&).");
     }
-
-    // If there are no errors in the password, then check confirm password
     if (errors.length === 0 && confirmPassword !== undefined) {
         if (password !== confirmPassword) {
             errors.push("Confirm password does not match.");

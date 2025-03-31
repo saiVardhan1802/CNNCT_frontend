@@ -27,7 +27,7 @@ const Booking = () => {
   ? [
       selectedEvent.hostName,
       ...selectedEvent.invitations
-        .filter(invite => invite.status !== "canceled") // Filtering out canceled invitations
+        .filter(invite => invite.status !== "canceled")
         .map(invite => invite.name)
     ]
   : [];
@@ -40,7 +40,7 @@ const Booking = () => {
         const upcomingEventsArray = meetings.map((meeting) => {
           const dateAndTime = convertUTCToLocalStrings(meeting.dateTime);
           return {
-            id: meeting._id, // Important for future updates
+            id: meeting._id, 
             dateTime: meeting.dateTime,
             day: dateAndTime.day,
             date: dateAndTime.date,
@@ -59,26 +59,14 @@ const Booking = () => {
       }
     };
     fetchUserMeetings();  
-  }, [username, userId]);  // fetch data when username/userId available
+  }, [username, userId]);
   
   useEffect(() => {
-    // This will run only after userEvents is updated!
     const { presentEvents, pastEvents } = segregateEventsByTime(userEvents);
     setPresentEvents(presentEvents);
     setPastEvents(pastEvents);
   }, [userEvents]);
 
-  //console.log("present events: ", presentEvents);
-  // console.log("User events: ", userEvents);
-//   userEvents.map((userEvent, index) => {
-//     console.log("Event number: ", index)
-//     console.log("Host name: ", userEvent.hostName)
-//     console.log("Event name :", userEvent.title)
-//     console.log("invitations: ", userEvent.invitations)
-//     console.log("Present event? :", new Date(userEvent.dateTime)>new Date())
-//     // console.log("DateTime: ", typeof userEvent.dateTime);
-//     console.log("Next event: ")
-// })
 
   function HandleSelectedEvent(e) {
     setSelectedEventId(e);
@@ -87,11 +75,9 @@ const Booking = () => {
   async function HandleStatus(e, eventId, userEmail) {
         try {
             e.preventDefault();
-            const { name } = e.currentTarget; // Ensuring correct target
+            const { name } = e.currentTarget; 
             
             const response = await updateUserInvitationStatus(userEmail, name, eventId, token);
-    
-            // Parsing response correctly
             const data = await response.json();
             
             if (!response.ok) {
@@ -124,13 +110,6 @@ const Booking = () => {
       />
       <div className={styles.main}>
         <MobileHeader />
-        {/* <div className={styles.profileContainer}>
-          <div className={styles.brand}>
-            <img src={cnnctIcon} alt="CNNCT logo" />
-            <p>CNNCT</p>
-          </div>
-          <img src={profileImg} alt="User profile" />
-        </div> */}
         <div className={styles.head}>
           <h2>Booking</h2>
           <p>See upcoming and past events booked through your event type links.</p>
@@ -193,8 +172,6 @@ export default Booking;
 
 export function convertUTCToLocalStrings(utcDateTime) {
   const dateObj = new Date(utcDateTime);
-
-  // Example output: "28 Feb"
   const localDateString = dateObj.toLocaleDateString(undefined, {
       day: '2-digit',
       month: 'short',
@@ -221,7 +198,7 @@ export function segregateEventsByTime(userEvents) {
   const currentDate = new Date();
 
   const presentEvents = userEvents.filter((event) => {
-    const eventDate = new Date(event.dateTime); // or event.dateTime if DB lo adi undi
+    const eventDate = new Date(event.dateTime);
     return eventDate >= currentDate;
   });
 
@@ -245,7 +222,7 @@ export function getEndTime(utcStartTime, durationInMinutes) {
   console.log("Start time: ", utcStartTime);
   console.log("Duration: ", durationInMinutes);
   const startDate = new Date(utcStartTime);
-  const endDate = new Date(startDate.getTime() + durationInMinutes * 60000); // 60000 ms = 1 min
+  const endDate = new Date(startDate.getTime() + durationInMinutes * 60000);
   
   const localEndTimeString = endDate.toLocaleTimeString(undefined, {
     hour: '2-digit',

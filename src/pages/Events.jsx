@@ -50,7 +50,6 @@ const Events = () => {
     const fetchUser = async () => {
       try {
         const user = await getUser(token);
-        //console.log("Fetched User:", user);  // ✅ Debugging log
         if (user) {
           setName(`${user.firstName} ${user.lastName}`);
         }
@@ -66,7 +65,6 @@ const Events = () => {
     const fetchUserMeetings = async () => {
       try {
         const meetings = await getUserMeetings(username, token);
-        // console.log("Meeting from backend: ", meetings);
         setUserMeetings(meetings.map(meeting => ({ ...meeting })));
       } catch (error) {
         console.error("error with fetching user meetings: ",error)
@@ -74,10 +72,8 @@ const Events = () => {
     }
     fetchUserMeetings();
   }, [username])
-  // console.log("User meetings: ", userMeetings);
 
   const { presentEvents, pastEvents } = segregateEventsByTime(userMeetings);
-  // console.log("Present events: ", presentEvents);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const filtered = filterUpcomingEvents(presentEvents, userId, userEmail);
   console.log("Filtered events: ", filtered);
@@ -86,27 +82,9 @@ const Events = () => {
     setUpcomingEvents(filtered);
   }, [userMeetings]);
   console.log("Upcoming Events: ", upcomingEvents);
-  //console.log("Present events: ", presentEvents)
-
-// backgroundColor: "000000"
-// dateTime: "2025-04-01T06:30:00.000Z"
-// description: ""
-// duration: 180
-// eventTopic: "meeting - 5"
-// hostId: "67dff1a5b6ad0cf9515fd1cd"
-// hostName: "vardhan ch"
-// invitations: (2) [{…}, {…}]
-// inviteeEmails: (3) ['svchalaka@gmail.com', 'vardhanch7@gmail.com', 'konderripuku@gmail.com']
-// isInactivated: false
-// link: "instagram.com"
-// password: "hogrider"
-// timezone: "Asia/Calcutta"
-// __v: 0
-// _id: "67e30f58d03c0d8f0a80a2a6"
 
   function HandleTextInput(e) {
     const { name, value } = e.target;
-    //console.log(value);
     setEventData((prev) => ({
       ...prev,
       [name]: value
@@ -161,6 +139,7 @@ const Events = () => {
                     setEventData={setEventData}
                     setIsModal={setIsModal}
                     eventData={eventData}
+                    upcomingEvents={upcomingEvents}
                   />
                 ))}
               </div>
@@ -205,10 +184,10 @@ export default Events;
 
 export function getUserTimezone() {
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const city = timeZone.split('/')[1].replace('_', ' '); // e.g., Kolkata
+  const city = timeZone.split('/')[1].replace('_', ' ');
 
-  const offsetMinutes = new Date().getTimezoneOffset(); // ex: -330 for IST
-  const totalMinutes = offsetMinutes * -1; // to convert negative to positive
+  const offsetMinutes = new Date().getTimezoneOffset();
+  const totalMinutes = offsetMinutes * -1;
   const sign = totalMinutes >= 0 ? '+' : '-';
   const absMinutes = Math.abs(totalMinutes);
   const hours = Math.floor(absMinutes / 60).toString().padStart(2, '0');
@@ -216,15 +195,6 @@ export function getUserTimezone() {
 
   return `UTC${sign}${hours}:${minutes} ${city}`;
 }
-
-// export function filterUpcomingEvents(userEvents, userId) {
-//   return userEvents.filter((event) => {
-//     const isHost = event.hostId === userId;
-//     const isAcceptedInvite = event.invitations.some(invite => invite.status === "accepted");
-
-//     return isHost || isAcceptedInvite;
-//   });
-// }
 
 export function filterUpcomingEvents(userEvents, userId, userEmail) {
   return userEvents.filter((event) => {

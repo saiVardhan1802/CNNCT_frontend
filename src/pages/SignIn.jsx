@@ -9,9 +9,6 @@ import toast from 'react-hot-toast';
 const SignIn = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  // if (token) {
-  //   navigate('/events');
-  // }
   const getHeadingText = () => {
     if (window.innerWidth < 600) return "Sign in to your CNNCT";
     if (window.innerWidth > 1023) return "Sign in";

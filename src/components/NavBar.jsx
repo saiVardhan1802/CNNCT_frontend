@@ -20,7 +20,6 @@ export default function NavBar(props) {
         const fetchUser = async () => {
             try {
                 const user = await getUser(token);
-                // console.log("Fetched User:", user);  // ✅ Debugging log
                 if (user) {
                     setName(`${user.firstName} ${user.lastName}`);
                     localStorage.setItem('name', `${user.firstName} ${user.lastName}`);
@@ -28,14 +27,12 @@ export default function NavBar(props) {
                     localStorage.setItem('userEmail', user.email);
                 }
             } catch (error) {
-                // console.error("Error fetching user:", error);
+                console.error("Error fetching user:", error);
             }
         };
 
         fetchUser();
     }, [token]); 
-       // Runs when the token changes
-    //    console.log("Name:", name);
 
     function SignOut() {
         localStorage.removeItem('token');

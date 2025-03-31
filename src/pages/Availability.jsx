@@ -27,7 +27,7 @@ const [unavailability, setUnavailability] = useState(days.map(day => ({
       endTimeError: false,
     }
   ],
-  isUnavailable: day === 'Sun', // Default Sundays to unavailable
+  isUnavailable: day === 'Sun',
 })));
 
 useEffect(() => {
@@ -36,7 +36,6 @@ useEffect(() => {
       const user = await getUser(token);
       if (user && user.unavailability) {
         setUnavailability(days.map(day => {
-          // Find user's unavailability data for the current day
           const existingData = user.unavailability.find(d => d.day === day);
           
           return {

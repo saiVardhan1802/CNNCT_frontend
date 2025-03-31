@@ -70,7 +70,7 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
                             
                             if (hasConflict(eventStart, eventEnd, slot.startTime, slot.endTime)) {
                                 toast.error("You are unavailable during this time");
-                                return true; // Stops execution of `.some()`
+                                return true;
                             }
                             return false;
                         });
@@ -83,7 +83,7 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
                 }
             }
     
-            if (isUnavailable) return; // Stops execution and prevents moving to the next modal
+            if (isUnavailable) return;
     
             setIsNextModal(true);
             toast.success("Please fill the remaining event details.");
@@ -187,15 +187,9 @@ function getEndTimeFromString(startTime, durationInMinutes) {
     if (ampm.toLowerCase() === "am" && hours === 12) {
         hours = 0;
     }
-
-    // Create a new Date object for today
     const now = new Date();
-    now.setHours(hours, minutes, 0, 0); // Set start time
-
-    // Add duration
-    const endDate = new Date(now.getTime() + durationInMinutes * 60000); // Convert min → ms
-
-    // Format end time in 12-hour format
+    now.setHours(hours, minutes, 0, 0);
+    const endDate = new Date(now.getTime() + durationInMinutes * 60000); 
     const localEndTimeString = endDate.toLocaleTimeString(undefined, {
         hour: '2-digit',
         minute: '2-digit',

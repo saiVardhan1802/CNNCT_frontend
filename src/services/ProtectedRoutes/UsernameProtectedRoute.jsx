@@ -5,14 +5,14 @@ const UsernameProtectedRoute = ({ children }) => {
   const username = localStorage.getItem("username");
 
   if (!token) {
-    return <Navigate to="/sign-in" />; // Not logged in
+    return <Navigate to="/sign-in" />;
   }
 
   if (username) {
-    return <Navigate to="/events" />; // Already registered username, no need to access category
+    return <Navigate to="/events" />;
   }
 
-  return children; // Can access category
+  return children;
 };
 
 export default UsernameProtectedRoute;

@@ -2,14 +2,6 @@
     display: flex;
 }
 
-/* .box div {
-    align-self: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-} */
-
 @media (max-width: 600px) {
     .container {
         margin-top: 3em;
@@ -23,7 +15,6 @@
         gap: 1em;
         align-items: center;
         height: 10vh;
-        /* background-color: red; */
     }
 
     .box img {
