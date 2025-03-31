@@ -1,7 +1,7 @@
 export const API_URL = import.meta.env.VITE_API_URL;
 
 export async function signUp(data) {
-    const response = await fetch(`${API_URL}/auth/register`, {
+    const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -12,7 +12,7 @@ export async function signUp(data) {
 };
 
 export async function login({ data }) {
-    const response = await fetch(`${API_URL}/auth/login`, {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -35,7 +35,7 @@ export async function login({ data }) {
 
 export const updateUser = async (token, updates) => {
     try {
-        const response = await fetch(`${API_URL}/user`, {
+        const response = await fetch(`${API_URL}/api/user`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const updateUser = async (token, updates) => {
 
 export async function getUser(token) {
     try {
-        const response = await fetch(`${API_URL}/user`, {
+        const response = await fetch(`${API_URL}/api/user`, {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -70,7 +70,7 @@ export async function getUser(token) {
 
 export async function createMeeting(updates, token) {
     try {
-        const response = await fetch(`${API_URL}/meeting`, {
+        const response = await fetch(`${API_URL}/api/meeting`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export async function createMeeting(updates, token) {
 
 export async function getUserMeetings(username, token) { //this
     try {
-        const response = await fetch(`${API_URL}/meeting/user/${username}`, {
+        const response = await fetch(`${API_URL}/api/meeting/user/${username}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -110,7 +110,7 @@ export async function getUserMeetings(username, token) { //this
 
 export async function updateUserInvitationStatus(userEmail, status, meetingId, token) {
     try {
-        const response = await fetch(`${API_URL}/meeting/${meetingId}/invite`, {
+        const response = await fetch(`${API_URL}/api/meeting/${meetingId}/invite`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export async function updateUserInvitationStatus(userEmail, status, meetingId, t
 
 export async function updateEvent(meetingId, updates, token) {
     try {
-        const response = await fetch(`${API_URL}/meeting/${meetingId}`, {
+        const response = await fetch(`${API_URL}/api/meeting/${meetingId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -152,7 +152,7 @@ export async function updateEvent(meetingId, updates, token) {
 
 export async function DeleteEvent(meetingId, token, userEmail, userId) {
     try {
-        const response = await fetch(`${API_URL}/meeting/${meetingId}`, {
+        const response = await fetch(`${API_URL}/api/meeting/${meetingId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
