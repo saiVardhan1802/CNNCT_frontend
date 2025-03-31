@@ -14,6 +14,7 @@ import { convertUTCToLocalStrings, getEndTime, getInvitationStatus, segregateEve
 import ToolBar from './calendar-components/ToolBar';
 
 const CalendarView = () => {
+    const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
     const userId = localStorage.getItem('userId');
     const [userEvents, setUserEvents] = useState([]);
@@ -21,7 +22,7 @@ const CalendarView = () => {
     useEffect(() => {
         const fetchUserMeetings = async () => {
             try {
-                const meetings = await getUserMeetings(username);
+                const meetings = await getUserMeetings(username, token);
                 const eventsArray = meetings.map((meeting) => {
                     const dateAndTime = convertUTCToLocalStrings(meeting.dateTime);
                     return {

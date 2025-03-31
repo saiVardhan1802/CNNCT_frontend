@@ -88,12 +88,13 @@ export async function createMeeting(updates, token) {
     }
 }
 
-export async function getUserMeetings(username) {
+export async function getUserMeetings(username, token) { //this
     try {
         const response = await fetch(`${API_URL}/meeting/user/${username}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             cache: "no-store"
         })

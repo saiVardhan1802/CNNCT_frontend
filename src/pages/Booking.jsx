@@ -35,7 +35,7 @@ const Booking = () => {
   useEffect(() => {
     const fetchUserMeetings = async () => { 
       try {
-        const meetings = await getUserMeetings(username);
+        const meetings = await getUserMeetings(username, token);
         console.log("Meetings from backend: ", meetings);
         const upcomingEventsArray = meetings.map((meeting) => {
           const dateAndTime = convertUTCToLocalStrings(meeting.dateTime);

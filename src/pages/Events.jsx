@@ -65,7 +65,7 @@ const Events = () => {
   useEffect(() => {
     const fetchUserMeetings = async () => {
       try {
-        const meetings = await getUserMeetings(username);
+        const meetings = await getUserMeetings(username, token);
         // console.log("Meeting from backend: ", meetings);
         setUserMeetings(meetings.map(meeting => ({ ...meeting })));
       } catch (error) {
