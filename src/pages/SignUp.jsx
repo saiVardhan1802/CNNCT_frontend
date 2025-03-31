@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles/SignUp.module.css';
-import frame from '../assets/auth/frame.png';
+import frame from '../assets/auth/Frame.png';
 import cnnctIcon from '../assets/global/cnnctIcon.png';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../services';

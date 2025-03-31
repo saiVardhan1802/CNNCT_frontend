@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles/Category.module.css';
-import frame from '../assets/auth/frame.png';
+import frame from '../assets/auth/Frame.png';
 import cnnctIcon from '../assets/global/cnnctIcon.png';
 import sales from '../assets/category/sales.png';
 import education from '../assets/category/education.png';
