@@ -112,6 +112,12 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
         }
     }
 
+    function HandleCopy() {
+        navigator.clipboard.writeText(event.link)
+        .then(() => toast.success("Event link copied."))
+        .catch(() => toast.error("Failed to copy event link."));
+    }
+
 // const [eventData, setEventData] = useState({
 //     eventId: '',
 //     eventTopic: '',
@@ -154,7 +160,7 @@ const EventComponent = ({ event, setUpcomingEvents, index, eventData, setEventDa
                     />
                     <span className={styles.slider}></span>
                 </label>
-                <RxCopy className={styles.icon} />
+                <RxCopy onClick={HandleCopy} className={styles.icon} />
                 <PiTrashThin onClick={HandleDelete} className={styles.icon} />
             </div>
         </div>
