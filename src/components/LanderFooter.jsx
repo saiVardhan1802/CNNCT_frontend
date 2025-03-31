@@ -3,7 +3,7 @@ import styles from './styles/LanderFooter.module.css';
 import LanderSignUpButton from './LanderSignUpButton';
 import twitter from '../assets/landing/socials/twitter.png';
 import instagram from '../assets/landing/socials/instagram.png';
-import youtube from '../assets/landing/socials/youtube.png';
+import youtube from '../assets/landing/socials/youTube.png';
 import tikTok from '../assets/landing/socials/tikTok.png';
 import frame from '../assets/landing/socials/frame.png';
 import { useNavigate } from 'react-router-dom';
