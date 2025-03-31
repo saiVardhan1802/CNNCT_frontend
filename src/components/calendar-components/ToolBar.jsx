@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/ToolBar.module.css';
-import nextIcon from 'D:/Projects/Cuvette/CNNCT/CNNCT/src/assets/calendar/next.svg';
-import prevIcon from 'D:/Projects/Cuvette/CNNCT/CNNCT/src/assets/calendar/prev.svg';
+import nextIcon from '../../assets/calendar/next.svg';
+import prevIcon from '../../assets/calendar/prev.svg';
 
 
 const ToolBar = ({ setView }) => {
