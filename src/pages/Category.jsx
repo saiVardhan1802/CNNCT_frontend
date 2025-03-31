@@ -12,6 +12,7 @@ import tech from '../assets/category/tech.png';
 import marketing from '../assets/category/marketing.png';
 import { updateUser } from '../services';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Category = () => {
     const navigate = useNavigate();
@@ -35,9 +36,17 @@ const Category = () => {
         try {
             e.preventDefault();
             const response = await updateUser(token, {username: username, category: selectedCategory});
-            console.log("Response:", response);
+            const data = await response.json();
+            console.log('response: ', data);
+            if (!response.ok) {
+                toast.error(data.message || "Something went wrong. Please try again.");
+                return
+            }
+            toast.success("Username registered.");
+            localStorage.setItem("username", username);
             navigate('/events');
         } catch (error) {
+            toast.error("Something went wrong. Please try again.")
             console.log(error);
         }
     }

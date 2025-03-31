@@ -67,6 +67,23 @@ input[type="date"] {
 
 button {
   border: none;
+  background-color: transparent;
+}
+
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-header {
+  /* background-color: black; */
+  /* pointer-events: none; */
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+  .mobile-none {
+    display: none;
+  }
 }
 
 
@@ -83,5 +100,9 @@ button {
   
   .background-white {
     background-color: white;
+  }
+
+  .background-trasparent {
+    background-color: transparent;
   }
 }

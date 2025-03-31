@@ -4,6 +4,7 @@ import frame from '../assets/auth/frame.png';
 import cnnctIcon from '../assets/global/cnnctIcon.png';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../services';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -28,12 +29,27 @@ const SignUp = () => {
         try {
             e.preventDefault();
             const response = await signUp({ data : formData });
-            if (response.ok) {
-                const data = await response.json();
+            const data = await response.json();
+            const errors = validatePassword(formData.password, formData.confirmPassword);
+            if (!response.ok) {
+                toast.error(data.message || "Something went wrong. Please try again.");
+                return;
+            }
+            else if(errors.length > 0) {
+                toast.error(errors.join("\n"), { autoClose: 5000 });
+                return;
+            }
+            else if(!formData.terms) {
+                toast.error("Please check the terms and conditions to proceed.");
+                return;
+            }
+            else if (response.ok) {
                 localStorage.setItem('token', data.token);
                 navigate('/category');
+                toast.success("Sign up successful.");
             }
         } catch (error) {
+            toast.error("Something went wrong. Please try again.")
             console.log(error);
         }
     }
@@ -100,4 +116,38 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignUp;
+
+function validatePassword(password, confirmPassword) {
+    if (!password) {
+        return ["Password cannot be empty."];
+    }
+
+    const errors = [];
+
+    if (password.length < 8) {
+        errors.push("Password must be at least 8 characters long.");
+    }
+    if (!/[A-Z]/.test(password)) {
+        errors.push("Password must contain at least one uppercase letter.");
+    }
+    if (!/[a-z]/.test(password)) {
+        errors.push("Password must contain at least one lowercase letter.");
+    }
+    if (!/\d/.test(password)) {
+        errors.push("Password must contain at least one number.");
+    }
+    if (!/[@$!%*?&]/.test(password)) {
+        errors.push("Password must contain at least one special character (@$!%*?&).");
+    }
+
+    // If there are no errors in the password, then check confirm password
+    if (errors.length === 0 && confirmPassword !== undefined) {
+        if (password !== confirmPassword) {
+            errors.push("Confirm password does not match.");
+        }
+    }
+
+    console.log("Errors found:", errors);
+    return errors.length > 0 ? errors : [];
+}

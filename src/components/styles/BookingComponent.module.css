@@ -1,0 +1,260 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container > div {
+    justify-content: space-between;
+    border: 1px solid red;
+}
+
+.leftInfo {
+    display: flex;
+    /* width: 60%; */
+    align-items: center;
+}
+
+.leftInfo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    /* border: 2px solid rebeccapurple; */
+    /* width: 50%; */
+}
+
+
+.timeText {
+    /* font-size: 0.85rem; */
+    color: #1877F2;
+}
+
+.teamText {
+    color: #6D6D6D;
+    /* font-size: 0.85rem; */
+}
+
+.titleText {
+    color: #454545;
+}
+
+.upcomingStatus {
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.upcomingButtons > .rejectedButton {
+    display: none;
+}
+
+.upcomingButtons > .acceptedButton {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.7rem;
+    background-color: #F3F3F1;
+}
+
+/* pending meeting styles */
+.pendingRight {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+/* canceled meeting styles */
+.canceledRight .acceptedButton, .canceledRight img, .canceledRight .membersLaptop {
+    display: none;
+}
+
+.canceledRight {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.canceledRight .rejectedButton {
+    background-color: #616161;
+    border-radius: 0.5rem;
+    padding: 0.5em 1em;
+    color: white;
+}
+
+.pastStatus {
+    display: flex;
+    width: 40%;
+    align-items: center;
+}
+
+.pastButtons {
+    display: flex;
+}
+
+.pastButtons img {
+    
+}
+
+
+/* mobiles */
+@media (max-width: 600px) {
+    .membersLaptop {
+        display: none;
+    }
+
+    .container {
+        padding: 1em 1em 1em 2em;
+    }
+
+    .leftInfo {
+        width: 65%;
+    }
+
+    .dateTime, .eventTitle {
+        font-size: 0.7rem;
+    }
+
+    .upcomingButtons > .acceptedButton {
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        background-color: #00C35F;
+        color: white;
+        padding: 0.5em 1em;
+        gap: 0.3em;
+    }
+
+    .upcomingButtons > .acceptedButton img {
+        width: 25%;
+        height: auto;
+    }
+
+    .membersMobile {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .membersMobile > button {
+        display: flex;
+        font-size: 0.7rem;
+        align-items: center;
+    }
+
+    .membersMobile > button > img {
+        width: 40%;
+        height: auto;
+    }
+
+    .pendingRight {
+        flex-direction: row-reverse;
+    }
+
+    .pendingButtons p {
+        display: none;
+    }
+
+    .pendingButtons {
+        margin-right: 0;
+        display: flex;
+        background-color: #00C35F;
+        border-radius: 1rem;
+        width: 20%;
+    }
+
+    .pendingButtons img {
+        width: 50%;
+        height: auto;
+    }
+
+    .pendingButtons button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pendingButtons .acceptedButton {
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    .pendingButtons .rejectedButton {
+        background-color: #ED0000;
+        border-radius: 1rem;
+    }
+
+    .canceledRight .rejectedButton {
+        font-size: 0.8rem;
+        background-color: #A1A1A1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2em;
+        margin-left: 25%;
+    }
+
+    .canceledRight .rejectedButton img {
+        display: block;
+        width: 25%;
+        height: auto;
+    }
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .leftInfo {
+        width: 60%;
+    }
+
+    .upcomingStatus {
+        width: 30%;
+    }
+
+    .leftInfo div {
+        width: 50%;
+    }
+
+    .membersLaptop {
+        display: flex;
+        color: #6D6D6D;
+        align-items: center;
+        gap: 0.5em;
+    }
+    
+    .memberLaptop > img {
+        width: 20%;
+        height: auto;
+    }
+
+    .container {
+        padding: 2em 2em 0em 2em;
+    }
+
+    .dateTime {
+        font-size: 0.9rem;
+    }
+    
+    .timeText, .teamText {
+        font-size: 0.85rem;
+    }
+    
+    .upcomingButtons img {
+        display: none;
+    }
+
+    .upcomingButtons > .acceptedButton {      
+        /* font-size: 1rem; */
+        padding: 0.7em 1em;
+        line-height: 0.5;
+    }
+    
+    .membersMobile > button {
+        display: none;
+    }
+
+    .pendingButtons {
+        display: none;
+    }
+
+    .pastButtons img {
+        display: none;
+    }
+    
+}

@@ -179,7 +179,7 @@ li {
 }
 
 .reviewTitle {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 300;
 }
 
@@ -187,9 +187,11 @@ li {
     display: flex;
     align-items: center;
     gap: 1em;
+    font-size: 1em;
 }
 
 .reviewerProfile {
+    font-size: 1em;
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
@@ -256,6 +258,17 @@ li {
 
     .customerStories button {
         margin: 1em auto;
+    }
+
+    .customerReviews {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+
+    .customerReviews > div {
+        width: 70%;
+        flex-shrink: 0;
+        font-size: 1.5rem;
     }
     
 }

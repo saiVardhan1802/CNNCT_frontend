@@ -1,13 +1,4 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-}
 
-.container > div {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-}
 
 .selectWrapper {
     position: relative;
@@ -41,4 +32,29 @@
     top: 10%;
     pointer-events: none;
     /* background-color: white; */
+}
+
+/* mobile  */ 
+@media (max-width: 600px) {
+    .container > div {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+/* laptop */
+@media (min-width: 1023px) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .container > div {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    
 }

@@ -4,3 +4,88 @@
     height: 100vh;
     background-color: #F3F3F1;
 }
+
+.main {
+    width: 85%;
+    padding: 2vw;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    margin-top: 2em;
+    background-color: white;
+    width: 100%;
+    padding: 1em 2em;
+    border-radius: 1rem;
+}
+
+.containerHead {
+    border-bottom: 1px solid #737373;
+    color: #1877F2;
+}
+
+.containerHead p {
+    padding-bottom: 0.5em;
+    display: inline-block;
+    border-bottom: 2px solid #1877F2;
+}
+
+.formWrapper {
+    margin-top: 1em;
+    width: 50%;
+}
+
+.formWrapper input {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #3E3E3E;
+    border-radius: 0.5rem;
+}
+
+.container button {
+    background-color: #1877F2;
+    color: white;
+    width: 15%;
+    padding: 0.75em;
+    border-radius: 0.5rem;
+    margin-top: 1em;
+}
+
+.buttonClass {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    .main {
+        width: 100%;
+    }
+
+    .page {
+        background-color: white;
+    }
+
+    .containerHead {
+        display: none;
+    }
+
+    .mobileNone {
+        display: none;
+    }
+
+    .formWrapper {
+        width: 100%;
+    }
+
+    .formWrapper input {
+        padding: 0.5em 0.75em;
+    }
+
+    .container button {
+        width: 30%;
+        padding: 0.5em;
+        border-radius: 1rem;
+    }
+}

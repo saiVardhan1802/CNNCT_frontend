@@ -3,12 +3,15 @@ import NavBox from "./NavBox";
 import styles from "./styles/NavBar.module.css";
 import { useNavigate } from "react-router-dom";
 import profileImg from '../assets/navbar/profileImg.png';
+import signOutIcon from '../assets/navbar/signOutIcon.svg';
 import { useEffect, useState } from "react";
 import { getUser } from "../services";
+import toast from "react-hot-toast";
 
 export default function NavBar(props) {
     const navigate = useNavigate();
     const [name, setName] = useState('');
+    const [isSignOut, setIsSignOut] = useState(false);
     const token = localStorage.getItem('token');
     
     useEffect(() => {
@@ -17,18 +20,33 @@ export default function NavBar(props) {
         const fetchUser = async () => {
             try {
                 const user = await getUser(token);
-                console.log("Fetched User:", user);  // ✅ Debugging log
+                // console.log("Fetched User:", user);  // ✅ Debugging log
                 if (user) {
                     setName(`${user.firstName} ${user.lastName}`);
+                    localStorage.setItem('name', `${user.firstName} ${user.lastName}`);
+                    localStorage.setItem('userId', user._id);
+                    localStorage.setItem('userEmail', user.email);
                 }
             } catch (error) {
-                console.error("Error fetching user:", error);
+                // console.error("Error fetching user:", error);
             }
         };
 
         fetchUser();
     }, [token]); 
        // Runs when the token changes
+    //    console.log("Name:", name);
+
+    function SignOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('username');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('name');
+        localStorage.removeItem('userId');
+        toast.success("Signed out successfully.");
+        navigate('/sign-in');
+    }
     
     return (
         <div style={{...props.navbarBackground}} className={styles.navbar}>
@@ -50,14 +68,21 @@ export default function NavBar(props) {
                     <p style={{
                         fontSize: '2rem',
                         fontWeight: ''
-                        // transform: 'scaleX(1.2)'
                     }}>+</p>
                     <p>Create</p>
                 </button>
             </div>
-            <div className={styles.profile}>
-                <img src={profileImg} alt="User profile" />
-                <p>{name}</p>
+            <div style={{position: 'relative'}} className={styles.profileContainer}>
+                <div style={{display: isSignOut? 'inline': 'none'}} className={styles.buttonContainer}>
+                    <button type="button" onClick={SignOut}>
+                        <img src={signOutIcon} alt="Sign out icon" />
+                        <p>Sign out</p>
+                    </button>
+                </div>
+                <div onClick={() => setIsSignOut(prev => !prev)} className={styles.profile}>
+                    <img src={profileImg} alt="User profile" />
+                    <p>{name}</p>
+                </div>
             </div>
         </div>
     )

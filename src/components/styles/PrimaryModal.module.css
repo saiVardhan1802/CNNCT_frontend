@@ -4,7 +4,7 @@
 }
 
 .wrapper , .timeWrapper {
-    width: 80%;
+    /* width: 80%; */
     /* background-color: red; */
     margin: 0 auto;
     display: flex;
@@ -20,35 +20,12 @@
     margin-top: 0.5em;
 }
 
-.inputWrapper , .selectWrapper , .textareaWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .textareaWrapper textarea {
     resize: none;
 }
 
-.selectWrapper > div {
-    width: 60%;
-}
-
-.hostNameSelector select {
-    width: 100%;
-} 
-
-select {
+.selectWrapper , .pseudoSelector {
     position: relative;
-}
-
-.inputWrapper input , .textareaWrapper textarea {
-    width: 60%;
-    border-radius: 0.5rem;
-}
-
-.inputWrapper input {
-    padding: 0.7em;
 }
 
 .inputWrapper input , .textareaWrapper textarea , .selectWrapper select {
@@ -59,39 +36,19 @@ select {
     color :#8A8A8A;
 }
 
-.textareaWrapper textarea {
-    font-size: 0.8rem;
-    padding: 1em;
-    line-height: 1.5;
-}
-
 /* .textareaWrapper {
     align-items: flex-start;
 } */
 
-.selectWrapper {
-    position: relative;
-}
-
 .selectWrapper select {
     appearance: none;
-    padding: 0.7em 2em 0.7em 1em;
-    border-radius: 0.5rem;
-}
-
-.selectWrapper span {
-    position: absolute;
-    top: 10%;
-    right: 0;
+    /* padding: 0.7em 2em 0.7em 1em;
+    border-radius: 0.5rem; */
 }
 
 .pseudoSelector {
     width: fit-content;
-    position: relative;
-}
-
-.selectWrapper span img {
-    transform: scale(0.7);
+    /* position: relative; */
 }
 
 .generalFormButton {
@@ -101,7 +58,7 @@ select {
     width: 60%;
     margin-left: 40%;
     margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; */
 }
 
 .generalFormButton button {
@@ -117,5 +74,140 @@ select {
 .saveButton {
     background-color: #1877F2;
     color: white;
+}
+
+/* testing */
+    
+.inputWrapper input {
+    padding: 0.7em;
+}
+
+.textareaWrapper textarea {
+    font-size: 0.8rem;
+    padding: 1em;
+    line-height: 1.5;
+}
+
+.selectWrapper select {
+    /* appearance: none; */
+    padding: 0.7em 3em 0.7em 1em;
+    border-radius: 0.5rem;
+}
+
+.selectWrapper span {
+    pointer-events: none;
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    .inputWrapper , .selectWrapper , .textareaWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .selectWrapper {
+        width: 100%;
+    }
+
+    .selectWrapper select {
+        width: 100%;
+    }
+
+    /* .selectWrapper > div span {
+        position: absolute;
+        right: 0;
+    } */
+
+    .selectWrapper::after {
+        content: '';
+        position: absolute;
+        right: 8%;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid #1877f2;
+        border-bottom: 2px solid #1877f2;
+        pointer-events: none;
+    }
+
+    .pseudoSelector::after {
+        content: '';
+        position: absolute;
+        right: 1%;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid #1877f2;
+        border-bottom: 2px solid #1877f2;
+        pointer-events: none;
+    }
+
+    .selectWrapper span img {
+        /* width: 10%; */
+        /* height: auto; */
+        display: none;
+    }
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .wrapper , .timeWrapper {
+        width: 80%;
+    }
+
+    .inputWrapper , .selectWrapper , .textareaWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .selectWrapper > div {
+        width: 60%;
+    }
+    
+    .hostNameSelector select {
+        width: 100%;
+    } 
+
+    .inputWrapper input , .textareaWrapper textarea {
+        width: 60%;
+        border-radius: 0.5rem;
+    }
+    
+    .inputWrapper input {
+        padding: 0.7em;
+    }
+
+    .textareaWrapper textarea {
+        font-size: 0.8rem;
+        padding: 1em;
+        line-height: 1.5;
+    }
+
+    .selectWrapper select {
+        /* appearance: none; */
+        padding: 0.7em 2em 0.7em 1em;
+        border-radius: 0.5rem;
+    }
+
+    .selectWrapper > div span {
+        position: absolute;
+        top: 10%;
+        right: 0;
+    }
+
+    .selectWrapper span img {
+        transform: scale(0.7);
+    }
+
+    .generalFormButton {
+        margin-bottom: 1.5em;
+    }
 }
 

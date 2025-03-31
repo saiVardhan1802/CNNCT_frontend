@@ -1,0 +1,10 @@
+.container {
+    padding: 1em 2em;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.rbcCalendar {
+    overflow-y: hidden;
+}
+

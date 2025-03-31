@@ -5,42 +5,21 @@
     font-family: "Poppins", sans-serif;
 }
 
-.main {
-    width: 85%;
-    padding: 2vw;
-    /* overflow-y: auto; */
-}
-
 .head {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
 }
 
-.head > button {
-    border-radius: 2rem;
-    color: #1877F2;
-    border: 1px solid #1877F2;
-    padding: 0.6em 0.4em;
-    letter-spacing: 0.05em;
-}
-
 .headText {
     font-size: 0.9rem;
-}
-
-.modal {
-    background-color: white;
-    margin-top: 2em;
-    border-radius: 2rem;
 }
 
 .modal > p {
     font-family: "Roboto", sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
-    text-align: center;
-    padding: 0.7em;
+    /* padding: 0.7em 0em; */
     color: #1877F2;
 }
 
@@ -48,10 +27,74 @@
     color: red;
 }
 
+.eventsContainer {
+    /* background-color: rebeccapurple; */
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 1em calc((4 / 3) * 1%);
+}
+
+.scrollContainer {
+    margin-top: 3em;
+    overflow-y: auto;
+}
+
 /* mobiles */
 @media (max-width: 600px) {
     .page {
         background-color: white;
+    }
+
+    .main {
+        padding: 2vw;
+    }
+
+    .brand {
+        display: flex;
+        font-size: 1.8rem;
+        font-weight: 600;
+        align-items: center;
+    }
+
+    .brandModal {
+        display: flex;
+        font-size: 1.5rem;
+        font-weight: 500;
+        align-items: center;
+    }
+
+    .brandModal > img {
+        width: 5%;
+        height: auto;
+    }
+
+    .head {
+        margin-top: 2em;
+    }
+
+    .head > button {
+        background-color: transparent;
+        color: #1877F2;
+        border: 1px solid #1877F2;
+        align-self: flex-start;
+        font-size: 1rem;
+        width: 30%;
+        padding: 0.6em 0.4em;
+        border-radius: 2rem;
+    }
+
+    .modal {
+        padding: 4vw;
+        font-size: 0.7rem !important;
+    }
+
+    .modal input, .modal select, .modal textarea {
+        font-size: 0.65rem !important;
+    }
+
+    .scrollContainer {
+        height: 65vh;
     }
 }
 
@@ -59,5 +102,39 @@
 @media (min-width: 1023px) {
     .page {
         background-color: #F3F3F1;
+    }
+
+    .main {
+        width: 85%;
+        padding: 2vw;
+        /* overflow-y: auto; */
+    }
+
+    .brand, .brandModal {
+        display: none;
+    }
+
+    .head > button {
+        border-radius: 2rem;
+        color: #1877F2;
+        border: 1px solid #1877F2;
+        padding: 0.6em 0.4em;
+        letter-spacing: 0.05em;
+        background-color: transparent;
+    }
+
+    .modal {
+        background-color: white;
+        margin-top: 2em;
+        border-radius: 2rem;
+    }
+
+    .modal > p {
+        text-align: center;
+        padding: 0.7em 0em;
+    }
+
+    .scrollContainer {
+        height: 75vh;
     }
 }

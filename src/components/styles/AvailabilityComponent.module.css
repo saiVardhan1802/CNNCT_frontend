@@ -1,0 +1,201 @@
+.availabilityViewContainer {
+    /* height: 65vh; */
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    margin-top: 1.5em;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.calendarViewContainer {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    margin-top: 1.5em;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.head {
+    display: flex;
+    padding: 1em 2em;
+    font-size: 0.9rem;
+    font-weight: 500;
+    gap: 8em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.timezone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+}
+
+.timezone select {
+    font-size: 0.8rem;
+    border: none;
+    appearance: none;
+    padding-right: 1em;
+    color: #1877F2;
+}
+
+.pseudoSelector {
+    position: relative;
+}
+
+.pseudoSelector::after {
+    position: absolute;
+    /* background-color: rebeccapurple; */
+    z-index: 10;
+    content: '';
+    height: 0.5em;
+    width: 0.5em;
+    transform: rotate(45deg);
+    border-bottom: 1px solid #1877F2;
+    border-right: 1px solid #1877F2;
+    right: 0;
+    top: 20%;
+    pointer-events: none;
+}
+
+.dayCheck {
+    display: flex;
+    align-items: center;
+    flex: 0 0 20%;
+    gap: 2em;
+}
+
+.unavailabilityContainer > p {
+    margin-left: 1em;
+    margin-top: 1.5em;
+}
+
+.unavailabilityContainer {
+    height: 50vh;
+    overflow-y: auto;
+    padding-bottom: 2em;
+}
+
+.unavailabilityWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 2em;
+    margin-top: 1em;
+}
+
+.dayContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.timeInputWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 0.5em;
+}
+
+.timeBlock input {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background-color: #F3F3F1;
+    border-radius: 0.2rem;
+    width: 20%;
+    line-height: 2;
+    padding: 0 0.5em;
+}
+
+.timeBlockIcons {
+    gap: 0.5em;
+}
+
+.removeIcon {      /*this************************/
+    width: 0.8em;
+    height: auto;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.timeBlockIcons > img {   /*this************************/
+    width: 0.8em;
+    height: auto;
+}
+
+.timeBlock {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+}
+
+.timeBlockInput {
+    width: 80%;
+    align-items: center;
+}
+
+.timeBlockInput > input {
+    width: 50%;
+}
+
+.inputStartError, .inputEndError {
+    border: 1px solid red !important; 
+}
+
+.timeBlock > div {
+    display: flex;
+}
+
+.dayContainer > img {   /*this************************/
+    width: 5%;
+    height: auto;
+}
+
+.main input[type="checkbox"]:checked:read-only {
+    position: relative;
+}
+
+.main input[type="checkbox"]:checked:read-only::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+
+/* mobiles */
+@media (max-width: 600px) {
+    .availabilityViewContainer {
+        width: 100%;
+    }
+
+    .pseudoSelector::after {
+        top: 18%;
+    }
+
+    .unavailabilityContainer {
+        height: 40vh;
+    }
+
+    .dayCheck {
+        /* width: 30%; */
+        background-color: rgba(102, 51, 153, 0.1);
+    }
+
+    .timeBlockInput {
+        width: 80%;
+    }
+
+    .timeBlockInput input {
+        line-height: 1.5;
+    };
+
+    .timeBlockIcons svg, .timeBlockIcons img {
+        width: 1.5em;
+        height: auto;
+    }
+
+    .dayContainer > img {
+        width: 2em;
+        height: auto;
+    }
+
+}

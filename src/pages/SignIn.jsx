@@ -4,6 +4,7 @@ import frame from '../assets/auth/frame.png'
 import cnnctIcon from '../assets/global/cnnctIcon.png';
 import { login } from '../services';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const SignIn = () => {
   // }
   const getHeadingText = () => {
     if (window.innerWidth < 600) return "Sign in to your CNNCT";
-    if (window.innerWidth > 1024) return "Sign in";
+    if (window.innerWidth > 1023) return "Sign in";
   };
   
   const [heading, setHeading] = useState(getHeadingText());
@@ -43,10 +44,17 @@ const SignIn = () => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
+        localStorage.setItem('username', formData.username);
+        toast.success("Successfully logged in.");
         navigate('/events');
+      }
+      else {
+        const data = await response.json();
+        toast.error(data.message || "Sign in failed. Please try again");
       }
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong. Please try again.");
     }
   }
   

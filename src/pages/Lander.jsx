@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles/Lander.module.css';
 import cnnctIcon from '../assets/global/cnnctIcon.png';
 import heroImg from '../assets/landing/heroImg.png';
@@ -10,6 +11,8 @@ import Integrations from '../components/Integrations';
 import LanderFooter from '../components/LanderFooter';
 
 const Lander = () => {
+    
+
   return (
     <div className={styles.page}>
       <div className={styles.landerNav}>

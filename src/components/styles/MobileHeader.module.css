@@ -1,0 +1,24 @@
+.profileContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 500;
+    align-items: center;
+}
+
+.brand > img {
+    width: 25%;
+    height: auto;
+}
+
+/* laptops */
+@media (min-width: 1023px) {
+    .profileContainer {
+        display: none;
+    }
+}
