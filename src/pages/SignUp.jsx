@@ -28,7 +28,7 @@ const SignUp = () => {
     async function HandleSubmit(e) {
         try {
             e.preventDefault();
-            const response = await signUp({ data : formData });
+            const response = await signUp(formData);
             const data = await response.json();
             const errors = validatePassword(formData.password, formData.confirmPassword);
             if (!response.ok) {
