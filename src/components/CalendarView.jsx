@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles/CalendarView.module.css';
 import '../App.css';
 import { Calendar, dateFnsLocalizer, Views } from "react-big-calendar";
@@ -12,18 +12,45 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { getUserMeetings } from '../services';
 import { convertUTCToLocalStrings, getEndTime, getInvitationStatus, segregateEventsByTime } from '../pages/Booking';
 import ToolBar from './calendar-components/ToolBar';
+import CustomEventComponent from './calendar-components/CustomEventComponent';
 
 const CalendarView = () => {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
     const userId = localStorage.getItem('userId');
     const [userEvents, setUserEvents] = useState([]);
+    const [date, setDate] = useState(new Date());
+    const [searchQuery, setSearchQuery] = useState("");
+    const [scrollToTime, setScrollToTime] = useState(new Date(0, 0, 0, 9, 0));
+
+    useEffect(() => {
+      if (searchQuery.trim() === "") return; // Ignore empty searches
+    
+      const foundEvent = userEvents.find(event =>
+        event.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    
+      if (foundEvent) {
+        setDate(new Date(foundEvent.start)); // Move to event date
+        setScrollToTime(new Date(foundEvent.start));
+      }
+      console.log("Vardhan", searchQuery, foundEvent, userEvents);
+    }, [searchQuery, userEvents]); 
+
+    const eventPropGetter = (event) => {
+      return {
+        style: {
+          border: event === searchQuery ? "2px solid green" : "",
+        },
+      };
+    };    
 
     useEffect(() => {
         const fetchUserMeetings = async () => {
             try {
                 const meetings = await getUserMeetings(username, token);
                 const eventsArray = meetings.map((meeting) => {
+                    console.log(meeting);
                     const dateAndTime = convertUTCToLocalStrings(meeting.dateTime);
                     return {
                         id: meeting._id, 
@@ -39,7 +66,7 @@ const CalendarView = () => {
                         status: getInvitationStatus(meeting, userId)
                     };
                 });
-                setUserEvents(eventsArray);
+                setUserEvents(transformMeetingsForCalendar(meetings));
             } catch (error) {
                 console.error("Error fetching meetings: ", error);
             }
@@ -74,34 +101,46 @@ const CalendarView = () => {
     
     console.log("Views:", views);
 
-    const events = [
-        {
-            title: "Team Meeting",
-            start: new Date(2025, 2, 28, 10, 0),
-            end: new Date(2025, 2, 28, 11, 0),
-        },
-        {
-            title: "Daily Standup",
-            start: new Date(2025, 2, 29, 9, 0),
-            end: new Date(2025, 2, 29, 9, 30),
-        }
-    ];    
+    const renderToolbar = useCallback(
+      (toolbarProps) => (
+        <ToolBar
+          {...toolbarProps}
+          setView={setView}
+          view={view}
+          date={date}
+          setDate={setDate}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+      ),
+      [setView, view, date, setDate, searchQuery, setSearchQuery] // Memoize to avoid unnecessary re-renders
+    );
 
   return (
     <div className={styles.container}>
       <Calendar
         className={styles.rbcCalendar}
         localizer={localizer}
-        events={events}
+        events={userEvents}
         startAccessor="start"
         endAccessor="end"
+        date={date}
         style={{width: "100%" }}
         views={views}
         view={view}
         onView={onView}
         toolbar={true}
+        scrollToTime={scrollToTime}
+        //ref={calendarRef}
+        eventPropGetter={eventPropGetter}
+        min={new Date(0, 0, 0, 9, 0)}
+        formats={{
+          timeGutterFormat: (date, culture, localizer) =>
+            localizer.format(date, "h a", culture) // Removes :00
+        }}
         components={{
-            toolbar: () => {return <ToolBar setView={setView} />}
+            toolbar: renderToolbar,
+            event: (props) => <CustomEventComponent {...props} />,
         }}
     />
     </div>

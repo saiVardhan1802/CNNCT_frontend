@@ -53,6 +53,61 @@ button {
   display: none;
 }
 
+.rbc-current-time-indicator {
+  display: none;
+}
+
+.rbc-time-view {
+  border: none !important;
+}
+
+.rbc-time-gutter > .rbc-timeslot-group {
+  border-bottom: none !important;
+}
+
+.rbc-timeslot-group {
+  min-height: 80px !important;
+}
+
+.rbc-today {
+  background-color: transparent !important;
+}
+
+.rbc-time-header-cell .rbc-today {
+  background-color: green !important;
+}
+
+.rbc-events-container {
+  width: 100% !important;
+  padding: 0px !important;
+}
+
+.rbc-event {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.rbc-event-label {
+  display: none !important;
+}
+
+.rbc-background-event {
+  padding: 0px !important;
+}
+
+/* .rbc-time-content > * + * > * {
+  border-left: 1px solid #000;
+} */
+
+/* .rbc-day-slot {
+  border: 0.1px solid rgba(0, 0, 0, 0.1);
+}
+
+.rbc-time-column {
+  border: 0.1px solid rgba(0, 0, 0, 0.1) !important;
+} */
+
 /* mobiles */
 @media (max-width: 600px) {
   .mobile-none {

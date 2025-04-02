@@ -30,30 +30,30 @@ const DateTimeInput = ({ eventData, setEventData, dateError, setDateError }) => 
                     <option key={index} value={timeSlot}>{timeSlot}</option>
                 ))}
             </select>
-            <span>
+            {/* <span>
                 <img src={arrow} alt="" />
-            </span>
+            </span> */}
         </div>
 
         <div className={`${styles.selectWrapper} ${styles.ampmContainer}`}>
             <select name="ampm" value={eventData.dateAndTime.ampm}
             onChange={(e) => handleChange('ampm', e.target.value)}>
-                <option value="am">AM</option>
+                <option value="am">am</option>
                 <option value="pm">pm</option>
             </select>
-            <span>
+            {/* <span>
                 <img src={arrow} alt="" />
-            </span>
+            </span> */}
         </div>
 
-        <div className={`${styles.selectWrapper} ${styles.timezoneContainer}`}>
+        <div className={`${styles.timezoneContainer}`}>
             <select name="timezone" value={eventData.dateAndTime.timezone}
             onChange={(e) => handleChange("timezone", e.target.value)}>
                 <option value={`${eventData.dateAndTime.timezone}`}>{eventData.dateAndTime.timezone}</option>
             </select>
-            <span>
+            {/* <span>
                 <img src={arrow} alt="" />
-            </span>
+            </span> */}
         </div>
       </div>
     </div>

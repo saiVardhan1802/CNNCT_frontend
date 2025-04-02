@@ -35,7 +35,7 @@ const Events = () => {
     dateAndTime: {
       date: "", // Format: YYYY-MM-DD
       time: "12:00", // Format: HH:MM (12-hour)
-      ampm: "PM", // "AM" or "PM"
+      ampm: "pm", // "AM" or "PM"
       timezone: getUserTimezone(), // Default timezone
     },
     duration: '1 hour',

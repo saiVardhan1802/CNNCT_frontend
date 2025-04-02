@@ -1,10 +1,6 @@
 
 
-.selectWrapper {
-    position: relative;
-}
-
-.selectWrapper > select {
+.selectWrapper > select, .timezoneContainer > select {
     padding: 0.7em 2em 0.7em 1em;
     appearance: none;
     border: 1.5px solid #E0E0E0;
@@ -34,12 +30,53 @@
     /* background-color: white; */
 }
 
+.selectWrapper {
+    position: relative;
+}
+
+.selectWrapper::after {
+    content: "";
+    position: absolute;
+    width: 0.5em;
+    height: 0.5em;
+    border-bottom: 2px solid #1877F2;
+    border-left: 2px solid #1877F2;
+    border-bottom-left-radius: 3px;
+    top: 45%;
+    transform: translateY(-50%) rotate(-45deg);
+    right: 10%;
+}
+
+.timezoneContainer {
+    position: relative;
+}
+
+.timezoneContainer::after {
+    content: "";
+    position: absolute;
+    width: 0.5em;
+    height: 0.5em;
+    border-bottom: 2px solid #1877F2;
+    border-left: 2px solid #1877F2;
+    border-bottom-left-radius: 3px;
+    top: 45%;
+    transform: translateY(-50%) rotate(-45deg);
+    right: 5%;
+}
+
 /* mobile  */ 
 @media (max-width: 600px) {
     .container > div {
         width: 60%;
         display: flex;
         justify-content: space-between;
+    }
+
+    .selectWrapper::after, .timezoneContainer::after {
+        border-width: 1.5px;
+        width: 0.7em;
+        height: 0.7em;
+        border-bottom-left-radius: 2px;
     }
 }
 

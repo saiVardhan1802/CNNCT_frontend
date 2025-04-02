@@ -19,14 +19,21 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
         }))
     }
 
-    async function HandleSave(e) {
+    async function handleSave(e) {
+        console.log("handleSave function started before try.");
+        // debugger;
+        // alert("HandleSave started!")
         try {
+            console.log("handleSave function started after try");
             e.preventDefault();
+            // alert("Event prevented!"); 
+            console.log("handleSave function started after default");
             if (!eventData.eventTopic) {
                 setEventTopicError(true);
                 toast.error("Please enter Event Topic.");
                 return;
             }
+            console.log("Event topic", eventData.eventTopic)
     
             for (const [key, value] of Object.entries(eventData.dateAndTime)) {
                 if (!value) {
@@ -42,12 +49,13 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
             const { date, time, ampm } = eventData.dateAndTime;
             const selectedDateTime = new Date(`${date} ${time} ${ampm}`);
             const now = new Date();
+            console.log("Selected date time: ", selectedDateTime);
     
             if (selectedDateTime <= now) {
                 toast.error("You can only set up events for the future.");
                 return;
             }
-    
+            console.log("Fetching user...");
             const user = await getUser(token);
             console.log("User unavailability: ", user.unavailability);
             const { day } = convertUTCToLocalStrings(eventData.dateAndTime.date);
@@ -57,6 +65,7 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
     
             for (const dayObj of user.unavailability) {
                 if (dayObj.day === slicedDay) {
+                    if (!dayObj.isUnavailable) continue;
                     if (dayObj.isUnavailable) {
                         toast.error(`You are unavailable on ${day}`);
                         isUnavailable = true;
@@ -88,9 +97,8 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
             setIsNextModal(true);
             toast.success("Please fill the remaining event details.");
         } catch (error) {
+            console.error("Caught error:", error);
             toast.error("Something went wrong.");
-            console.log("Caught error:", error);
-            throw error;
         }
     }
     
@@ -126,9 +134,9 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
                         <select name="hostName" id="hostName" value={eventData.hostName} onChange={HandleSelectInput}>
                             <option value={name}>{name}</option>
                         </select>
-                        <span>
+                        {/* <span>
                             <img src={arrow} alt="" />
-                        </span>
+                        </span> */}
                     </div>
                 </div>
                 <div className={styles.textareaWrapper}>
@@ -151,9 +159,9 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
                                 <option value="2 hour">2 hour</option>
                                 <option value="3 hour">3 hour</option>
                             </select>
-                            <span>
+                            {/* <span>
                                 <img src={arrow} alt="" />
-                            </span>
+                            </span> */}
                         </div>
                     </div>
                 </div>
@@ -161,8 +169,18 @@ const PrimaryModal = ({ eventData, setEventData, HandleTextInput, name, setIsMod
                     <button className={styles.cancelButton}
                         onClick={() => setIsModal(false)}
                     >Cancel</button>
-                    <button type='submit' className={styles.saveButton}
-                        onClick={HandleSave}
+                    <button type='button' className={styles.saveButton}
+                        onClick={(e) => {
+                            console.log("Button clicked!");
+                            
+                            if (!handleSave) {
+                                console.error("HandleSave is undefined!");
+                                return;
+                            }
+                        
+                            console.log("Calling HandleSave function...");
+                            handleSave(e);
+                        }}
                     >Save</button>
                 </div>
             </div>

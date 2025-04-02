@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .brand {
@@ -11,9 +12,22 @@
     align-items: center;
 }
 
-.brand > img {
-    width: 25%;
+.profileImg {
+    width: 100%;
+}
+
+.profileImg > img {
     height: auto;
+}
+
+.logoutWrapper {
+    display: inline;
+    z-index: 100;
+}
+
+.logout {
+    display: flex;
+    
 }
 
 /* laptops */

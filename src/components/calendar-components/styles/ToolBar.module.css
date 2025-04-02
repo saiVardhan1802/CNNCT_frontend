@@ -45,4 +45,35 @@
 
 .navigateViews {
     display: flex;
+    gap: 1em;
+}
+
+.navigateViews > div {
+    
+}
+
+.searchBar {
+    position: relative;
+}
+
+.searchBar > img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.3em;
+}
+
+.searchBar > input {
+    background-color: rgb(233, 229, 229);
+    color: black;
+    padding: 0.5em 2em;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+/* mobiles */
+@media (max-width: 600px) {
+    .container {
+        display: none;
+    }
 }

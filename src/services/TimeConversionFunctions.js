@@ -1,4 +1,5 @@
 export function parseTime(timeStr, baseDate = new Date()) {
+    console.log("timeStr: ", timeStr);
     const [time, ampm] = timeStr.split(" ");
     let [hours, minutes] = time.split(":").map(Number);
   

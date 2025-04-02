@@ -164,7 +164,9 @@ const AvailabilityComponent = ({ unavailability, setUnavailability, isAvailabili
                 </div>
             </div>
                 :
-                <CalendarView />
+                <div>
+                    <CalendarView />
+                </div>
             }
         </div>
     )
