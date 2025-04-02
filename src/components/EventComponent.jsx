@@ -34,6 +34,28 @@ const EventComponent = ({ event, upcomingEvents, setUpcomingEvents, index, event
         }
     }, [event]);
 
+    useEffect(() => {
+        const eventStartTime = new Date(event.dateTime);
+        const eventEndTime = new Date(eventStartTime.getTime() + event.duration * 60000); // Convert minutes to ms
+    
+        let conflictFound = false;
+    
+        for (const upcomingEvent of upcomingEvents) {
+            if (upcomingEvent._id === event._id) continue; // Skip the current event
+    
+            const upcomingStartTime = new Date(upcomingEvent.dateTime);
+            const upcomingEndTime = new Date(upcomingStartTime.getTime() + upcomingEvent.duration * 60000);
+    
+            // Check if times overlap
+            if (eventStartTime < upcomingEndTime && eventEndTime > upcomingStartTime) {
+                conflictFound = true;
+                break;
+            }
+        }
+    
+        setInConflict(conflictFound);
+    }, [event, upcomingEvents]);
+
     function EditEvent(e, event) {
         try {
             e.preventDefault();

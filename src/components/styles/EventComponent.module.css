@@ -3,6 +3,29 @@
     border-radius: 1.5rem;
     overflow: hidden;
     background-color: white;
+    position: relative;
+}
+
+.errorBox {
+    position: absolute;
+    top: 8%;
+    left: 2em;
+}
+
+.errorBox > div {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    width: fit-content;
+    z-index: 100;
+    font-size: 0.8rem;
+    padding: 0 0.5em;
+    border-radius: 1rem;
+    box-shadow: 
+    0px -1px 3px rgba(0, 0, 0, 0.1),  /* Very light top shadow */
+    2px 2px 6px rgba(0, 0, 0, 0.15), /* Right shadow */
+    -2px 2px 6px rgba(0, 0, 0, 0.15), /* Left shadow */
+    0px 3px 8px rgba(0, 0, 0, 0.2);  /* Softer bottom shadow */
 }
 
 .header {
